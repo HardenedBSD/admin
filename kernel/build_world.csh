@@ -1,6 +1,6 @@
 #!/bin/csh
 
-set __DATE=`date "+%Y-%m-%d""`
+set __DATE=`date "+%Y-%m-%d"`
 set __NAME="master-${__DATE}"
 set __NEWBE="/tmp/newbe"
 set __DESTDIR="${__NEWBE}"
