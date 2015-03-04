@@ -22,9 +22,9 @@ set _SSHG_TMP=`mktemp`
 
 cp ${_SSHG_BL}{,.prev}
 
-strings ${_SSHG_DB} | tr -d '(' > ${_SSHG_TMP}
+strings ${_SSHG_DB} | tr -Cd '[[0-9]\n.' > ${_SSHG_TMP}
 cat ${_SSHG_BL} >> ${_SSHG_TMP}
-sort -u ${_SSHG_TMP} > ${_SSHG_BL}
+sort -un ${_SSHG_TMP} | sed -rn '/([0-9]{1,3}\.){3}[0-9]{1,3}/p' > ${_SSHG_BL}
 unlink ${_SSHG_TMP}
 
 ipfw delete ${_IPFW_RULE_NUM} deny ip from 'table(blacklist)' to any
