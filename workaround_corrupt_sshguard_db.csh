@@ -33,7 +33,7 @@ ipfw table blacklist create
 foreach i ( `cat ${_SSHG_BL}` )
 	ipfw table blacklist atomic add $i
 end
-ipfw add ${_IPFW_RULE_NUM} deny ip from 'table(blacklist)' to any
+ipfw add ${_IPFW_RULE_NUM} deny all from 'table(blacklist)' to any
 ipfw table blacklist list
 
 service sshguard stop
