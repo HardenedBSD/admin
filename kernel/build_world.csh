@@ -50,6 +50,8 @@ if ( ${_ret} != 0 ) then
 	goto _err
 endif
 
+sysrc -f ${__DESTDIR}/etc/rc.conf jenkins_enable=NO
+
 beadm umount ${__NAME}
 set _ret=$?
 if ( ${_ret} != 0 ) then
